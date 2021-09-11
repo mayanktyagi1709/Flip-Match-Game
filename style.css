@@ -6,9 +6,38 @@
 
 body {
   height: 100vh;
-  background: #f05e23;
+  display: flex;
+  background-color: #f05e23;
 }
 
-img {
-  width: 100px;
+.flip-match {
+  height: 640px;
+  width: 640px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.card:active {
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 20px;
+  border-radius: 5px;
+  background: #ff7417;
 }
