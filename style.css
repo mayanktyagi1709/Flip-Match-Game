@@ -50,6 +50,6 @@ body {
   backface-visibility: hidden;
 }
 
-.font-face {
+.front-face {
   transform: rotateY(180deg);
 }
