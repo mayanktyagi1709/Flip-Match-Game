@@ -1,9 +1,11 @@
 const cards = document.querySelectorAll('.card');
 
 let hasFlippedCard = false;
+let lockBoard = false;
 let firstCard, secondCard;
 
 function flipCard() {
+  if(lockBoard) return;
   this.classList.add('flip');
 
   if (!hasFlippedCard) {
@@ -17,6 +19,7 @@ function flipCard() {
   // second click
   hasFlippedCard = false;
   secondCard = this;
+  lockBoard = true;
 
   checkForMatch();
 }
@@ -27,19 +30,22 @@ function checkForMatch()
   isMatch ? disableCards() : unflipCards();
 }
 
-function disablecards()
+function disableCards()
 {
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
+
+  lockBoard = false;
 }
 
-function unflipcards()
+function unflipCards()
 {
   setTimeout(() => {
     firstCard.classList.remove('flip');
-    econdCard.classList.remove('flip');
+    secondCard.classList.remove('flip');
+
+    lockBoard = false
   }, 1500);
 }
         
-
 cards.forEach(card => card.addEventListener('click', flipCard));
